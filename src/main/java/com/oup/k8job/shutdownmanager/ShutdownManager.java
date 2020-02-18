@@ -38,6 +38,12 @@ class ShutdownManager {
 		camelContext.stop();
 		logger.debug("Stopping camel context finished");
 		logger.debug("Stopping Spring BOOT Application --> "+appContext.getId());
+		try {
+			Thread.sleep(15 * 1000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		SpringApplication.exit(appContext, () -> 0);
 	}
 }
