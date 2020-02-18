@@ -13,8 +13,8 @@ public class SampleRoute extends RouteBuilder {
 
 	@Override
 	public void configure() throws Exception {
-		onCompletion()
-        .log("*********** Ending the route **************")
+		onCompletion()		
+        .log(LoggingLevel.INFO,logger,"*********** Ending the route **************")
         //.to("controlbus:route?async=false&action=stop&routeId=id_SampleRouteRoute")
         //.log("*********** id_SampleRouteRoute Stoped **************")
         .to("bean:springManagedShutdownManager?method=initiateShutdown()");
