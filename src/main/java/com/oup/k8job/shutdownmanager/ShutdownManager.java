@@ -1,5 +1,6 @@
 package com.oup.k8job.shutdownmanager;
 
+import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 import org.apache.camel.CamelContext;
@@ -20,6 +21,16 @@ class ShutdownManager {
 	private CamelContext camelContext;
 
 	public void initiateShutdown() {
+		Map<String, String> env = System.getenv();
+        // Java 8
+        //env.forEach((k, v) -> System.out.println(k + ":" + v));
+
+        // Classic way to loop a map
+        for (Map.Entry<String, String> entry : env.entrySet()) {
+        	logger.debug(entry.getKey() + " : " + entry.getValue());
+        }
+		
+		
 		logger.debug("Stopping camel context");
 		camelContext.getShutdownStrategy().setLogInflightExchangesOnTimeout(true);
 		camelContext.getShutdownStrategy().setTimeUnit(TimeUnit.MINUTES);
