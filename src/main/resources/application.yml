@@ -1,3 +1,24 @@
 spring:
   application:
     name: IntegrationK8Job
+com:
+  oup:
+    numofdaystokeep: 7
+---
+spring:
+  profiles: dev
+com:
+  oup:
+    numofdaystokeep: 7
+---
+spring:
+  profiles: uat
+com:
+  oup:
+    numofdaystokeep: 7
+---
+spring:
+  profiles: prod
+com:
+  oup:
+    numofdaystokeep: 60
