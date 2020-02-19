@@ -26,10 +26,10 @@ public class DeleteFilesBL {
 		rootFolders.add("/OUT");
 
 		// rootFolders.add("C:\\SKG\\PERSONAL\\abc");
-		rootFolders.forEach(rootfolder -> {
+		rootFolders.parallelStream().forEach(rootfolder -> {
 
 			FileUtils.listFiles(new File(rootfolder), new AgeFileFilter(cutoff), TrueFileFilter.INSTANCE)
-					.forEach(item -> {
+					.parallelStream().forEach(item -> {
 						logger.debug("Deleting file --> " + item.getName() + " from " + item.getParent());
 						FileUtils.deleteQuietly(item);
 					});
