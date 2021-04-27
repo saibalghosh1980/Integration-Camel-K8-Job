@@ -113,7 +113,7 @@
 		<appender-ref ref="STDOUT" />
 		<appender-ref ref="FILE-AUDIT" />
 	</logger>
-	<logger name="org.apache.camel" level="INFO">
+	<logger name="org.apache.camel" level="DEBUG">
 		<appender-ref ref="STDOUT" />
 		<appender-ref ref="FILE-AUDIT" />
 	</logger>

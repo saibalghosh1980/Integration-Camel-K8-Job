@@ -42,6 +42,11 @@
 			<artifactId>camel-timer-starter</artifactId>
 			<version>3.0.1</version>
 		</dependency>
+		<dependency>
+			<groupId>org.apache.camel.springboot</groupId>
+			<artifactId>camel-controlbus-starter</artifactId>
+			<version>3.0.1</version>
+		</dependency>
 		<!-- Add for all projects -->
 		<!-- https://mvnrepository.com/artifact/javax.xml.bind/jaxb-api -->
 		<dependency>

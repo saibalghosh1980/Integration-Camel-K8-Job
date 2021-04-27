@@ -21,9 +21,9 @@ public class DeleteFilesBL {
 	public void deleteOldFilesFolders() {
 		ArrayList<String> rootFolders = new ArrayList<>();
 		long cutoff = System.currentTimeMillis() - (Integer.parseInt(daysToDelete) * 24 * 60 * 60 * 1000);
-		rootFolders.add("/logs");
-		rootFolders.add("/IN");
-		rootFolders.add("/OUT");
+		rootFolders.add("/home/wolverine/logs");
+		//rootFolders.add("/IN");
+		//rootFolders.add("/OUT");
 
 		// rootFolders.add("C:\\SKG\\PERSONAL\\abc");
 		rootFolders.forEach(rootfolder -> {

@@ -8,6 +8,7 @@ import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.context.ApplicationContext;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Component;
 
 @Component("springManagedShutdownManager")
@@ -20,6 +21,7 @@ class ShutdownManager {
 	@Autowired
 	private CamelContext camelContext;
 
+	@Async
 	public void initiateShutdown() {
 		Map<String, String> env = System.getenv();
         // Java 8
@@ -34,8 +36,8 @@ class ShutdownManager {
 		
 		logger.debug("Stopping camel context");
 		camelContext.getShutdownStrategy().setLogInflightExchangesOnTimeout(true);
-		camelContext.getShutdownStrategy().setTimeUnit(TimeUnit.MINUTES);
-		camelContext.getShutdownStrategy().setTimeout(120);
+		camelContext.getShutdownStrategy().setTimeUnit(TimeUnit.SECONDS);
+		camelContext.getShutdownStrategy().setTimeout(60);
 		camelContext.stop();
 		logger.debug("Stopping camel context finished");
 		logger.debug("Stopping Spring BOOT Application --> "+appContext.getId());
